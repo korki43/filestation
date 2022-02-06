@@ -1,0 +1,151 @@
+/*
+ * Copyright (c) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
+ * Copyright (c) 2016-present Sven Greb <development@svengreb.de>
+ *
+ * Project:    Nord
+ * Version:    0.2.0
+ * Repository: https://github.com/arcticicestudio/nord
+ * License:    MIT
+ */
+
+:root {
+  --nord0: #2e3440;
+  --nord1: #3b4252;
+  --nord2: #434c5e;
+  --nord3: #4c566a;
+  --nord4: #d8dee9;
+  --nord5: #e5e9f0;
+  --nord6: #eceff4;
+  --nord7: #8fbcbb;
+  --nord8: #88c0d0;
+  --nord9: #81a1c1;
+  --nord10: #5e81ac;
+  --nord11: #bf616a;
+  --nord12: #d08770;
+  --nord13: #ebcb8b;
+  --nord14: #a3be8c;
+  --nord15: #b48ead;
+}
+
+:root {
+  --background: var(--nord5);
+  --dropzone-border: var(--nord3);
+  --list-border: #4c566a3a;
+  --card: var(--nord4);
+  --text: var(--nord1);
+  --link: var(--nord2);
+  --text-important: var(--nord0);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--nord0);
+    --dropzone-border: var(--nord3);
+    --list-border: var(--nord3);
+    --card: var(--nord1);
+    --text: var(--nord5);
+    --link: var(--nord4);
+    --text-important: var(--nord6);
+  }
+}
+
+body {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  background-color: var(--background);
+  padding: 2rem 1rem;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+::selection {
+  color: var(--card);
+  background-color: var(--link);
+}
+
+.hidden {
+  display: none;
+}
+
+#dropzone {
+  display: block;
+  margin-top: 3rem;
+  cursor: pointer;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+#dropzone:hover,
+#dropzone.hover {
+  outline: 2px dashed var(--dropzone-border);
+}
+
+#dropzone h1 {
+  color: var(--text-important);
+}
+
+.card {
+  margin: 1rem auto;
+  max-width: 30rem;
+  background-color: var(--card);
+  border-radius: 1rem;
+}
+
+#info,
+#list {
+  border-radius: 0.5rem;
+}
+
+#info {
+  padding: 0.5rem 0;
+  color: var(--text-important);
+}
+
+#info span {
+  padding: 0 1rem;
+}
+
+a {
+  color: var(--link);
+}
+
+#list ul {
+  padding-left: 0;
+  border-radius: inherit;
+}
+
+#list li {
+  display: block;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--list-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#list li button {
+  background-color: transparent;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+}
+
+#list button svg {
+  vertical-align: -0.125em;
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+#list li:first-child {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+
+#list li:last-child {
+  border-bottom-right-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+
+li + li {
+  border-top-width: 0 !important;
+}

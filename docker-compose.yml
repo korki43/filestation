@@ -1,0 +1,10 @@
+version: "3"
+services:
+  filestation:
+    image: korki43/filestation:latest
+    container_name: filestation
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+    volumes:
+      - $PWD/files:/app/files/root
