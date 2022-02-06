@@ -80,6 +80,7 @@ function addToList(file: string) {
   const link = document.createElement("a");
   link.innerText = `${location.host}${basePath}/${file}`;
   link.href = `${location.origin}${basePath}/${file}`;
+  link.download = "download";
 
   const delBtn = document.createElement("button");
   delBtn.innerHTML = trashcanSVG;
