@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  filestation:
+    image: korki43/filestation:latest
+    container_name: filestation
+    restart: unless-stopped
+    command: ["-p", "80", "-i", "../index.html", "--root", "files/root", "--path", "/filestation", "-v", "--no-list"]
+    ports:
+      - "1080:80"
+    volumes:
+      - $PWD/files:/app/files/root
+  caddy:
+    image: caddy:2-alpine
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - "1080:1080"
+    volumes:
+      - $PWD/Caddyfile:/etc/caddy/Caddyfile

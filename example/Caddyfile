@@ -1,0 +1,6 @@
+http://localhost:1080 {
+  handle /filestation/* {
+    reverse_proxy filestation:80
+  }
+  respond "Hello!"
+}
