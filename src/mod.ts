@@ -23,7 +23,7 @@ const args = parse(Deno.args, {
     port: "3000",
     list: true,
     verbose: false,
-    block: "",
+    block: ["index.html"],
     index: "index.html",
     root: "files",
     path: "/",
@@ -32,6 +32,7 @@ const args = parse(Deno.args, {
     port: "p",
     index: "i",
     verbose: "v",
+    block: "b",
   },
 }) as Arguments;
 
@@ -40,7 +41,8 @@ const basePath = args.path;
 export const verbose = args.verbose;
 export const rootDir = args.root;
 export const indexFile = args.index;
-export const blockedFiles = args.block.split(",");
+export const blockedFiles = [args.block].flat().filter(Boolean);
+blockedFiles.push("");
 export const enableList = args.list;
 if (enableList) blockedFiles.push("list");
 

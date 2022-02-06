@@ -13,4 +13,4 @@ ADD src src
 COPY --from=frontend /app/files /app/files/
 RUN mkdir files/root
 ENTRYPOINT ["deno", "run", "-q", "--allow-net", "--allow-write=files", "--allow-read=files", "src/mod.ts"]
-CMD ["--port", "80", "-i", "../index.html", "--root", "files/root"]
+CMD ["--port", "80", "-i", "../index.html", "--root", "files/root", "--block"]
