@@ -44,9 +44,9 @@ deno run -q --allow-net --allow-write=myfolder --allow-read=myfolder src/mod.ts 
 Docker images are published in the docker container registry
 ([korki43/filestation](https://hub.docker.com/r/korki43/filestation)).
 
-The image is shipped with the web ui in [./web/index.html](./web/index.html).
-The frontend file is stored outside of the root folder to allow mounting a
-volume for persistent storage.
+The image is shipped with the index file built from
+[./web/index.html](./web/index.html). The index file is stored outside of the
+root folder to allow mounting a volume for persistent storage.
 
 The docker image uses these arguments:
 
@@ -60,7 +60,7 @@ The docker image uses these arguments:
 | verbose | false (default)         |
 | path    | `/` (default)           |
 
-You can add your own frontend file by mounting to `/app/files/index.html` or by
+You can add your own index file by mounting to `/app/files/index.html` or by
 giving a different "command" to docker.
 
 ### docker-compose
@@ -97,3 +97,18 @@ curl -X DELETE filestation.local/myfile.txt
 Upload files by sending a POST request which contains a "file" property with the
 file. Download a file by seding a GET request to the filpath. Delete a file by
 sending a DELETE request to the filepath.
+
+### Web UI
+
+The project in [./web](./web) is a minimal index file which is also used in the docker container. The page uses the fetch api to allow uploading, deleting and downloading files (the last two only if the list option is enabled).
+
+<table>
+  <tr>
+    <td>
+      <img src="./example/web_ui_dark.png" />
+    </td>
+   <td>
+      <img src="./example/web_ui_light.png" />
+    </td>
+  </tr>
+</table>
