@@ -29,7 +29,7 @@ const listFiles = async () => {
 };
 
 const sendFile = async (filePath: string) => {
-  const stats = await Deno.stat(filePath);
+  const stats = await Deno.lstat(filePath);
   if (!stats.isFile) throw new Error();
   const contentLength = stats.size;
   const file = await Deno.open(filePath);
