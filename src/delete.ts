@@ -9,8 +9,8 @@ export const handleDelete = async (fileName: string) => {
 
   try {
     await Deno.remove(filePath);
+    return new Response(null, { status: 204 });
   } catch {
     return new Response("Not Found", { status: 404 });
   }
-  return new Response(null, { status: 204 });
 };
