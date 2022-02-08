@@ -23,5 +23,5 @@ export const handleUpload = async (req: Request) => {
     }
   }
   await Deno.writeFile(filePath, new Uint8Array(fileData));
-  return new Response(null, { status: 204 });
+  return new Response(null, { status: 201 });
 };
