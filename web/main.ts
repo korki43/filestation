@@ -83,7 +83,7 @@ function displayList(fileList: string[]) {
 function addToList(file: string) {
   const listItem = document.createElement("li");
   const link = document.createElement("a");
-  link.innerText = `${location.host}${basePath}/${file}`;
+  link.innerText = file;
   link.href = `${location.origin}${basePath}/${file}`;
   link.download = "download";
 
