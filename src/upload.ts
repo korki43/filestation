@@ -14,6 +14,14 @@ export const handleUpload = async (req: Request) => {
 
   const filePath = join(rootDir, file.name);
   const fileData = await file.arrayBuffer();
+  try {
+    await Deno.stat(filePath);
+    return new Response("exists", { status: 409 });
+  } catch (err) {
+    if (!(err instanceof Deno.errors.NotFound)) {
+      throw err;
+    }
+  }
   await Deno.writeFile(filePath, new Uint8Array(fileData));
   return new Response(null, { status: 204 });
 };
