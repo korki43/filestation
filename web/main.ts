@@ -57,8 +57,8 @@ async function uploadFile(file: File) {
   const res = await fetch(`${basePath}/`, { method: "POST", body: formData });
   if (res.ok) {
     addToList(file.name);
-  } else if(res.status == 409){
-    showInfo(`File with name ${file.name} already exists.`)
+  } else if (res.status == 409) {
+    showInfo(`File with name ${file.name} already exists.`);
   } else {
     showInfo(`Couldn't upload file ${file.name}.`);
   }
@@ -68,7 +68,7 @@ function showInfo(info: string) {
   const infoText = document.querySelector<HTMLSpanElement>("div#info span")!;
   infoText.innerText = info;
   infoText.parentElement?.classList.remove("hidden");
-  setTimeout(()=>{
+  setTimeout(() => {
     infoText.parentElement?.classList.add("hidden");
   }, 1000 * 15);
 }
