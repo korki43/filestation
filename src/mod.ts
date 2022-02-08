@@ -74,7 +74,7 @@ const handleRequest: Handler = (req) => {
       case "DELETE":
         return handleDelete(fileName);
       default:
-        return new Response("Not Implemented", { status: 501 });
+        return new Response("Method not allowed", { status: 405 });
     }
   } catch (err) {
     console.error(err);
