@@ -23,7 +23,7 @@ Arguments:
   `files`)
 - `--index`, `-i`: The file that will be sent on requests to `/`, relative to
   the root folder. (default: `index.html`)
-- `--block`, `-b`: Files that can't be deleted/overwritten. Can be defined
+- `--block`, `-b`: Files that can't be deleted/uploaded. Can be defined
   multiple times. (default: `index.html`)
 - `--verbose`, `-v`: Show additional logging output. (default: false)
 - `--list, --no-list`: Enable/disable file listing. When this is enabled it will
