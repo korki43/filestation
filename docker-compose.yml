@@ -1,7 +1,11 @@
+# docker compose file to test in development
+# for production example please see README.md or ./examples
+
 version: "3"
 services:
   filestation:
-    image: korki43/filestation:latest
+    build: .
+    # image: korki43/filestation:latest
     container_name: filestation
     ports:
       - "3000:80"
