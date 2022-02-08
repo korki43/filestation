@@ -88,6 +88,7 @@ function addToList(file: string) {
   link.download = "download";
 
   const delBtn = document.createElement("button");
+  delBtn.title = "Delete";
   delBtn.innerHTML = trashcanSVG;
   delBtn.addEventListener("click", async () => {
     (await deleteFile(file)) && listItem.remove();
