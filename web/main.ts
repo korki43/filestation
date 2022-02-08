@@ -68,6 +68,9 @@ function showInfo(info: string) {
   const infoText = document.querySelector<HTMLSpanElement>("div#info span")!;
   infoText.innerText = info;
   infoText.parentElement?.classList.remove("hidden");
+  setTimeout(()=>{
+    infoText.parentElement?.classList.add("hidden");
+  }, 1000 * 15);
 }
 
 function displayList(fileList: string[]) {
