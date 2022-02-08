@@ -57,6 +57,8 @@ async function uploadFile(file: File) {
   const res = await fetch(`${basePath}/`, { method: "POST", body: formData });
   if (res.ok) {
     addToList(file.name);
+  } else if(res.status == 409){
+    showInfo(`File with name ${file.name} already exists.`)
   } else {
     showInfo(`Couldn't upload file ${file.name}.`);
   }
