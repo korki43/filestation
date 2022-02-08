@@ -85,7 +85,7 @@ function addToList(file: string) {
   const link = document.createElement("a");
   link.innerText = file;
   link.href = `${location.origin}${basePath}/${file}`;
-  link.download = "download";
+  link.download = file;
 
   const delBtn = document.createElement("button");
   delBtn.title = "Delete";
