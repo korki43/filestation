@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   filestation:
-    image: korki43/filestation:latest
+    build: filestation
     container_name: filestation
     restart: unless-stopped
     command: ["-p", "80", "-i", "../index.html", "--root", "files/root", "--path", "/filestation", "-v", "--no-list"]

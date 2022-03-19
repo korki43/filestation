@@ -23,8 +23,8 @@ Arguments:
   `files`)
 - `--index`, `-i`: The file that will be sent on requests to `/`, relative to
   the root folder. (default: `index.html`)
-- `--block`, `-b`: Files that can't be deleted/uploaded. Can be defined
-  multiple times. (default: `index.html`)
+- `--block`, `-b`: Files that can't be deleted/uploaded. Can be defined multiple
+  times. (default: `index.html`)
 - `--verbose`, `-v`: Show additional logging output. (default: false)
 - `--list, --no-list`: Enable/disable file listing. When this is enabled it will
   also block files with the name "list" from being uploaded. (default: true)
@@ -41,10 +41,11 @@ deno run -q --allow-net --allow-write=myfolder --allow-read=myfolder src/mod.ts 
 
 ### Docker
 
-Docker images are published in the docker container registry
-([korki43/filestation](https://hub.docker.com/r/korki43/filestation)).
+You can build a docker image using the provided [Dockerfile](./Dockerfile).
+Clone the repository and run `docker-compose up` to use the default
+[compose file](./docker-compose.yml).
 
-The image is shipped with the index file built from
+The image includes the index file built from
 [./web/index.html](./web/index.html). The index file is stored outside of the
 root folder to allow mounting a volume for persistent storage.
 
@@ -62,21 +63,6 @@ The docker image uses these arguments:
 
 You can add your own index file by mounting to `/app/files/index.html` or by
 giving a different "command" to docker.
-
-### docker-compose
-
-```yml
-version: "3"
-services:
-  filestation:
-    image: korki43/filestation:latest
-    container_name: filestation
-    ports:
-      - "80:80"
-    restart: unless-stopped
-    volumes:
-      - $PWD/files:/app/files/root
-```
 
 Also see [./examples/docker-compose.yml](./examples/docker-compose.yml) for an
 example of a setup behind a reverse proxy.
@@ -100,7 +86,9 @@ sending a DELETE request to the filepath.
 
 ### Web UI
 
-The project in [./web](./web) is a minimal index file which is also used in the docker container. The page uses the fetch api to allow uploading, deleting and downloading files (the last two only if the list option is enabled).
+The project in [./web](./web) is a minimal index file which is also used in the
+docker container. The page uses the fetch api to allow uploading, deleting and
+downloading files (the last two only if the list option is enabled).
 
 <table>
   <tr>
