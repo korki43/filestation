@@ -34,27 +34,6 @@ const sendFile = async (filePath: string) => {
   const contentLength = stats.size;
   const file = await Deno.open(filePath);
 
-  let bytesSent = 0;
-  const body = new ReadableStream({
-    async pull(controller) {
-      const bytes = new Uint8Array(16_640);
-      const bytesRead = await file.read(bytes);
-      if (bytesRead === null) {
-        file.close();
-        controller.close();
-        return;
-      }
-      controller.enqueue(
-        bytes.slice(0, Math.min(bytesRead, contentLength - bytesSent))
-      );
-      bytesSent += bytesRead;
-      if (bytesSent > contentLength) {
-        file.close();
-        controller.close();
-      }
-    },
-  });
-
   const headers = new Headers();
   headers.set("content-length", `${contentLength}`);
   const contentType = getContentType(filePath);
@@ -62,7 +41,7 @@ const sendFile = async (filePath: string) => {
     headers.set("content-type", contentType);
   }
 
-  return new Response(body, {
+  return new Response(file.readable, {
     headers,
     status: 200,
   });

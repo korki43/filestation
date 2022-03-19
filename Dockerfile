@@ -6,7 +6,7 @@ RUN npm ci
 RUN npm run build
 
 
-FROM lukechannings/deno:v1.18.2
+FROM lukechannings/deno:v1.20.1
 
 WORKDIR /app
 ADD src src
